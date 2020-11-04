@@ -123,6 +123,17 @@ alert( 'Gogogo now!'.match(/(go)+/ig) ); // "Gogogo"
 Parentheses group characters together, so (go)+ means go, gogo, gogogo and so on.
 
 ### Bracket Expressions
+Brackets indicate a set of characters to match. Any individual character between the brackets will match.
+
+```sh
+'elephant'.match(/[abcd]/) // -> matches 'a'
+```
+
+You can use the ^ metacharacter to negate what is between the brackets.
+
+```dh
+'donkey'.match(/[^abcd]/) // -> matches 'o'
+```
 
 ### Greedy and Lazy Match
 
