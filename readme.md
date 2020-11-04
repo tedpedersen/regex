@@ -92,13 +92,20 @@ Character classes distinguish kinds of characters such as, for example, distingu
 See full Charater List here [Mozilla Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
 ### Flags
-The RegExp object is used for matching text with a pattern.
-The following three expressions create the same regular expression object:
+A regular expression (also “regexp”, or just “reg”) consists of a pattern and optional flags.
+
+There are two syntaxes that can be used to create a regular expression object.
+The “long” syntax:
 
 ```sh 
-let re = /ab+c/i; // literal notation
-let re = new RegExp('ab+c', 'i') // constructor with string pattern as first argument
-let re = new RegExp(/ab+c/, 'i') // constructor with regular expression literal as first argument (Starting with ECMAScript 6)
+regexp = new RegExp("pattern", "flags");
+```
+
+And the “short” one, using slashes "/":
+
+```sh 
+regexp = /pattern/; // no flags
+regexp = /pattern/gmi; // with flags g,m and i (to be covered soon)
 ```
 
 ### Grouping and Capturing
