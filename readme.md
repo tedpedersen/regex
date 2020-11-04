@@ -56,8 +56,8 @@ alert( /snow$/.test(str1) ); // true
 ### Quantifiers
 Quantifiers indicate numbers of characters or expressions to match.
 | Character | Meaning |
-
-| x* | Matches the precedi| ------ | ------ |ng item "x" 0 or more times. For example, /bo*/ matches "boooo" in "A ghost booooed" and "b" in "A bird warbled", but nothing in "A goat grunted". |
+| ------ | ------ |
+| x* | Matches the preceding item "x" 0 or more times. For example, /bo*/ matches "boooo" in "A ghost booooed" and "b" in "A bird warbled", but nothing in "A goat grunted". |
 | x+ | Matches the preceding item "x" 1 or more times. Equivalent to {1,}. For example, /a+/ matches the "a" in "candy" and all the "a"'s in "caaaaaaandy".|
 | x? | Matches the preceding item "x" 0 or 1 times. For example, /e?le?/ matches the "el" in "angel" and the "le" in "angle." If used immediately after any of the quantifiers *, +, ?, or {}, makes the quantifier non-greedy (matching the minimum number of times), as opposed to the default, which is greedy (matching the maximum number of times). |
 | x{n} | Where "n" is a positive integer, matches exactly "n" occurrences of the preceding item "x". For example, /a{2}/ doesn't match the "a" in "candy", but it matches all of the "a"'s in "caandy", and the first two "a"'s in "caaandy". |
@@ -71,22 +71,7 @@ In a regular expression it is denoted with a vertical line character |.
 For instance, we need to find programming languages: HTML, PHP, Java or JavaScript.
 The corresponding regexp: html|php|java(script)?.
 
-```sh
-let regexp = /html|php|css|java(script)?/gi;
-
-let str = "First HTML appeared, then CSS, then JavaScript";
-
-alert( str.match(regexp) ); // 'HTML', 'CSS', 'JavaScript'
-```
-
 ### Character Classes
-Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
-
-| Characters | Meaning |
-| ------ | ------ |
-| ```.``` | Has one of the following meanings: Matches any single character except line terminators: \n, \r, \u2028 or \u2029. For example, /.y/ matches "my" and "ay", but not "yes", in "yes make my day". Inside a character set, the dot loses its special meaning and matches a literal dot. Note that the m multiline flag doesn't change the dot behavior. So to match a pattern across multiple lines, the character set [^] can be used — it will match any character including newlines. ES2018 added the s "dotAll" flag, which allows the dot to also match line terminators. |
-| ```\d``` | Matches any digit (Arabic numeral). Equivalent to [0-9]. For example, /\d/ or /[0-9]/ matches "2" in "B2 is the suite number". |
-| ```\D``` | | Matches any character that is not a digit (Arabic numeral). Equivalent to [^0-9]. For example, /\D/ or /[^0-9]/ matches "B" in "B2 is the suite number". | 
 
 ### Flags
 
