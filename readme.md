@@ -136,13 +136,43 @@ You can use the ^ metacharacter to negate what is between the brackets.
 ```
 
 ### Greedy and Lazy Match
+The standard quantifiers in regular expressions are greedy, meaning they match as much as they can, only giving back as necessary to match the remainder of the regex. By using a lazy quantifier, the expression tries the minimal match first.
+
+Lazy Search — will try to match the smallest possible string. Append ```?``` to make the search lazy.
 
 ### Boundaries
+The ```\b``` is an anchor like the caret ```^``` and the dollar sign ```$```. It matches a position that is called a “word boundary”. The word boundary match is zero-length.
 
 ### Back-references
+Backreferences match the same text as previously matched by a capturing group. Suppose you want to match a pair of opening and closing HTML tags, and the text in between. By putting the opening tag into a backreference, we can reuse the name of the tag for the closing tag. Here’s how: ```<([A-Z][A-Z0-9]*)\b[^>]*>.*?</\1>```. This regex contains only one pair of parentheses, which capture the string matched by ```[A-Z][A-Z0-9]*```. This is the opening HTML tag. (Since HTML tags are case insensitive, this regex requires case insensitive matching.) The backreference ```\1``` (backslash one) references the first capturing group. ```\1``` matches the exact same text that was matched by the first capturing group. The ```/``` before it is a literal character. It is simply the forward slash in the closing HTML tag that we are trying to match.
 
 ### Look-ahead and Look-behind
+Sometimes we need to find only those matches for a pattern that are followed or preceeded by another pattern.
+
+##### Lookahead
+The syntax is: X(?=Y), it means "look for X, but match only if followed by Y". There may be any pattern instead of X and Y.
+For an integer number followed by €, the regexp will be \d+(?=€):
+```sh
+let str = "1 turkey costs 30€";
+alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by €
+```
+
+##### Lookbehind
+Lookahead allows to add a condition for “what follows”.
+
+Lookbehind is similar, but it looks behind. That is, it allows to match a pattern only if there’s something before it.
+
+The syntax is:
+
+Positive lookbehind: ```(?<=Y)X```, matches ```X```, but only if there’s ```Y``` before it.
+Negative lookbehind: ```(?<!Y)X```, matches ```X```, but only if there’s no ```Y``` before it.
+For example, let’s change the price to US dollars. The dollar sign is usually before the number, so to look for $30 we’ll use ```(?<=\$)\d+``` – an amount preceded by ```$```:
+
+```sh
+let str = "1 turkey costs $30";
+// the dollar sign is escaped \$
+alert( str.match(/(?<=\$)\d+/) ); // 30 (skipped the sole number)
+```
 
 ## Author
-
-Ted Pedersen
+Ted Pedersen [Ted Pedersen](https://github.com/tedpedersen)
