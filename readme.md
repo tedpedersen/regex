@@ -66,6 +66,18 @@ Quantifiers indicate numbers of characters or expressions to match.
 | x*?, x+?, x?, x{n}?, x{n,}?, x{n,m}? | By default quantifiers like * and + are "greedy", meaning that they try to match as much of the string as possible. The ? character after the quantifier makes the quantifier "non-greedy": meaning that it will stop as soon as it finds a match. For example, given a string like ```"some <foo> <bar> new </bar> </foo> thing": /<.*>/ will match "<foo> <bar> new </bar> </foo>"/<.*?>/ will match "<foo>"``` |
 
 ### OR Operator
+Alternation is the term in regular expression that is actually a simple “OR”.
+In a regular expression it is denoted with a vertical line character |.
+For instance, we need to find programming languages: HTML, PHP, Java or JavaScript.
+The corresponding regexp: html|php|java(script)?.
+
+```sh
+let regexp = /html|php|css|java(script)?/gi;
+
+let str = "First HTML appeared, then CSS, then JavaScript";
+
+alert( str.match(regexp) ); // 'HTML', 'CSS', 'JavaScript'
+```
 
 ### Character Classes
 
