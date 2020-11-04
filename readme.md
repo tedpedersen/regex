@@ -109,6 +109,18 @@ regexp = /pattern/gmi; // with flags g,m and i (to be covered soon)
 ```
 
 ### Grouping and Capturing
+A part of a pattern can be enclosed in parentheses (...). This is called a “capturing group”.
+
+That has two effects:
+
+It allows to get a part of the match as a separate item in the result array.
+If we put a quantifier after the parentheses, it applies to the parentheses as a whole.
+
+```sh
+alert( 'Gogogo now!'.match(/(go)+/ig) ); // "Gogogo"
+```
+
+Parentheses group characters together, so (go)+ means go, gogo, gogogo and so on.
 
 ### Bracket Expressions
 
