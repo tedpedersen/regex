@@ -94,9 +94,12 @@ See full Charater List here [Mozilla Docs](https://developer.mozilla.org/en-US/d
 ### Flags
 The RegExp object is used for matching text with a pattern.
 The following three expressions create the same regular expression object:
-```let re = /ab+c/i; // literal notation
+
+```sh 
+let re = /ab+c/i; // literal notation
 let re = new RegExp('ab+c', 'i') // constructor with string pattern as first argument
-let re = new RegExp(/ab+c/, 'i') // constructor with regular expression literal as first argument (Starting with ECMAScript 6)```
+let re = new RegExp(/ab+c/, 'i') // constructor with regular expression literal as first argument (Starting with ECMAScript 6)
+```
 
 ### Grouping and Capturing
 
